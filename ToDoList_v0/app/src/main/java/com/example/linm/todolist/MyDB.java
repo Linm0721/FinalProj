@@ -14,7 +14,7 @@ import android.util.Log;
 public class MyDB extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Contacts.db";
-    public static final String TABLE_NAME = "Todolist";
+    public static final String TABLE_NAME = "Contacts";
     private static final int DB_VERSION = 1;
 
     public MyDB(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -31,9 +31,7 @@ public class MyDB extends SQLiteOpenHelper {
                 + "(title TEXT PRIMARY KEY,"
                 + "type integer,"
                 + "content TEXT,"
-                + "ddl TEXT,"
-                + "setuptime TEXT)";
-        Log.e("debug","创建数据库成功");
+                + "ddl TEXT)";
         db.execSQL(CREATE_TABLE);
 
     }
@@ -42,20 +40,18 @@ public class MyDB extends SQLiteOpenHelper {
 
     }
 
-    public void insert(String title, int type,String content, String ddl,String setuptime){
+    public void insert(String title, int type,String content, String ddl){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("title",title);
         values.put("type",type);
         values.put("content",content);
         values.put("ddl",ddl);
-        values.put("setuptime",setuptime);
         db.insert(TABLE_NAME, null, values);
-        Log.e("debug","插入成功");
         db.close();
     }
 
-    public void update(String title, int type,String content, String ddl,String setuptime){
+    public void update(String title, int type,String content, String ddl){
         SQLiteDatabase db = getWritableDatabase();
         String whereClause = "title = ?" ;
         String[] whereArgs = {title};
@@ -64,7 +60,6 @@ public class MyDB extends SQLiteOpenHelper {
         values.put("type",type);
         values.put("content",content);
         values.put("ddl",ddl);
-        values.put("setuptime",setuptime);
         db.update(TABLE_NAME, values, whereClause, whereArgs);
         db.close();
     }
@@ -79,14 +74,14 @@ public class MyDB extends SQLiteOpenHelper {
 
     public Cursor ifexit(String title){
         SQLiteDatabase db = getWritableDatabase();
-        String query = "select * from Todolist where title = \"" +title+"\"";
+        String query = "select * from Contacts where title = \"" +title+"\"";
         Log.e("debug",query);
         return db.rawQuery(query,null);
     }
 
     public Cursor selectall( ){
         SQLiteDatabase db = getWritableDatabase();
-        String query = "select * from Todolist ";
+        String query = "select * from Contacts ";
         return db.rawQuery(query,null);
     }
 

@@ -12,8 +12,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class AddTodolist extends AppCompatActivity {
 
@@ -81,9 +79,7 @@ public class AddTodolist extends AppCompatActivity {
                 String title = Title.getText().toString();
                 String content = Content.getText().toString();
                 String time = Time.getText().toString();
-                SimpleDateFormat  formatter  =  new  SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
-                Date curDate =  new Date(System.currentTimeMillis());
-                String  str = formatter.format(curDate);
+
                 //名字为空
                 if(title.equals("")){
                     Toast.makeText(AddTodolist.this, "备忘不能为空", Toast.LENGTH_SHORT).show();
@@ -95,7 +91,7 @@ public class AddTodolist extends AppCompatActivity {
                         Toast.makeText(AddTodolist.this, "备忘不能重复", Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        db.insert(title,type,content,time,str);
+                        db.insert(title,type,content,time);
                         setResult(99, new Intent());
                         finish();
                     }

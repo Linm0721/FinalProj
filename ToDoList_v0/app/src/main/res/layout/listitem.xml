@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardPreventCornerOverlap="true"
+    card_view:cardUseCompatPadding="true"
+    card_view:contentPadding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/type"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/birthday"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="XXX生日"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/ddl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1月12日"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

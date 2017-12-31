@@ -10,14 +10,12 @@ public class ListItem {
     private String title;
     private String content;
     private String ddl;
-    private String setuptime;
 
-    public ListItem(int type, String title, String content, String ddl,String setuptime){
+    public ListItem(int type, String title, String content, String ddl){
         this.type = type;
         this.title = title;
         this.content = content;
         this.ddl = ddl;
-        this.setuptime = setuptime;
     }
 
     public int getType(){
@@ -31,8 +29,5 @@ public class ListItem {
     }
     public String getDdl(){
         return ddl;
-    }
-    public String getSetuptime(){
-        return setuptime;
     }
 }
