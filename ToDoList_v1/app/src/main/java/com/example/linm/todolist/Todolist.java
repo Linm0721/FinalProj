@@ -63,7 +63,7 @@ public class Todolist extends AppCompatActivity {
             //备忘列表单击
             public  void onClick(int position){
 
-           /*     LayoutInflater factory = LayoutInflater.from(Todolist.this);
+                LayoutInflater factory = LayoutInflater.from(Todolist.this);
                 View newView = factory.inflate(R.layout.dialoglayout, null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(Todolist.this);
 
@@ -83,15 +83,9 @@ public class Todolist extends AppCompatActivity {
                 final TextView timeTV = (TextView) newView.findViewById(R.id.time_tv);
                 final TextView setuptimeTV = (TextView)newView.findViewById(R.id.setuptime);
 
-                final Button button = (Button)newView.findViewById(R.id.button);*/
+                final Button button = (Button)newView.findViewById(R.id.button);
 
-                final int updateid = mAdapter.getItem(position).getId();
-                Intent intent = new Intent(Todolist.this, ToDoDetail.class);
-                intent.putExtra("id",updateid);
-                startActivityForResult(intent, 9);
-
-
-         /*      typeE = mAdapter.getItem(position).getType();
+                typeE = mAdapter.getItem(position).getType();
                 titleET.setText(mAdapter.getItem(position).getTitle());
                 contentET.setText(mAdapter.getItem(position).getContent());
                 timeET.setText(mAdapter.getItem(position).getDdl());
@@ -212,7 +206,7 @@ public class Todolist extends AppCompatActivity {
                         SimpleDateFormat formatter  =  new  SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
                         Date curDate =  new Date(System.currentTimeMillis());
                         String  str = formatter.format(curDate);
-                        db.update(updateid,titleET.getText().toString(),typeE,contentET.getText().toString(),timeET.getText().toString(),str);
+                        db.update(titleET.getText().toString(),typeE,contentET.getText().toString(),timeET.getText().toString(),str);
                         dataUpdate();
                     }
                 });
@@ -222,13 +216,13 @@ public class Todolist extends AppCompatActivity {
 
                     }
                 });
-                builder.show();*/
+                builder.show();
 
             }
             @Override
             //备忘列表长按
             public  void onLongClick(final int position){
-                final int removeid = mAdapter.getItem(position).getId();
+                    final String removename = mAdapter.getItem(position).getTitle();
                 AlertDialog.Builder message = new AlertDialog.Builder(Todolist.this);
 
                 message.setMessage("是否删除");
@@ -236,7 +230,7 @@ public class Todolist extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //删除
                         MyDB db = new MyDB(getBaseContext());
-                        db.delete(removeid);
+                        db.delete(removename);
                         // 删除listview中的对应数据
                         mAdapter.removeItem(position);
                     }
@@ -265,36 +259,15 @@ public class Todolist extends AppCompatActivity {
 
             }
             else {
-                //发送广播
-                if(cursor.moveToFirst()){
-                    int id = cursor.getInt(0);
-                    String title = cursor.getString(1);
-                    int type = cursor.getInt(2);
-                    String content = cursor.getString(3);
-                    String ddl = cursor.getString(4);
-                    String stime = cursor.getString(5);
-                    ListItem newitem = new ListItem(id,type,title,content,ddl,stime);
-                    mAdapter.addItem(newitem);
-                    Intent wi = new Intent();
-                    wi.setAction("widgetStaticBroadcast");
-                    wi.putExtra("id",id);
-                    wi.putExtra("title",title);
-                    wi.putExtra("type",type);
-                    wi.putExtra("ddl",ddl);
-                    sendBroadcast(wi);
-                }
-
                 while (cursor.moveToNext()) {
-                    int id = cursor.getInt(0);
-                    String title = cursor.getString(1);
-                    int type = cursor.getInt(2);
-                    String content = cursor.getString(3);
-                    String ddl = cursor.getString(4);
-                    String stime = cursor.getString(5);
-                    ListItem newitem = new ListItem(id,type,title,content,ddl,stime);
+                    String title = cursor.getString(0);
+                    int type = cursor.getInt(1);
+                    String content = cursor.getString(2);
+                    String ddl = cursor.getString(3);
+                    String stime = cursor.getString(4);
+                    ListItem newitem = new ListItem(type,title,content,ddl,stime);
                     mAdapter.addItem(newitem);
                 }
-
 
             }
         } catch (SQLException e) {
@@ -304,7 +277,7 @@ public class Todolist extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 9 && (resultCode == 99 || resultCode==98)) {
+        if (requestCode == 9 && resultCode == 99) {
             dataUpdate();
         }
     }

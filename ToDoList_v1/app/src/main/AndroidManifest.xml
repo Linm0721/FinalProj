@@ -17,20 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Todolist" />
-        <activity android:name=".AddTodolist" />
-
-        <receiver android:name=".mWidget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="widgetStaticBroadcast" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/m_widget_info" />
-        </receiver>
-
-        <activity android:name=".ToDoDetail"></activity>
+        <activity android:name=".AddTodolist"></activity>
     </application>
 
 </manifest>

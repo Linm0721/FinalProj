@@ -14,7 +14,7 @@ import android.util.Log;
 public class MyDB extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Contacts.db";
-    public static final String TABLE_NAME = "Todolist2";
+    public static final String TABLE_NAME = "Todolist";
     private static final int DB_VERSION = 1;
 
     public MyDB(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -28,8 +28,7 @@ public class MyDB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db){
         String CREATE_TABLE = "CREATE TABLE if not exists "
                 + TABLE_NAME
-                + "(id integer PRIMARY KEY AUTOINCREMENT,"
-                +"title TEXT,"
+                + "(title TEXT PRIMARY KEY,"
                 + "type integer,"
                 + "content TEXT,"
                 + "ddl TEXT,"
@@ -56,10 +55,10 @@ public class MyDB extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void update(int id, String title, int type,String content, String ddl,String setuptime){
+    public void update(String title, int type,String content, String ddl,String setuptime){
         SQLiteDatabase db = getWritableDatabase();
-        String whereClause = "id = ?" ;
-        String[] whereArgs = {id+""};
+        String whereClause = "title = ?" ;
+        String[] whereArgs = {title};
         ContentValues values = new ContentValues();
         values.put("title",title);
         values.put("type",type);
@@ -70,30 +69,24 @@ public class MyDB extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void delete(int id){
+    public void delete(String title){
         SQLiteDatabase db = getWritableDatabase();
-        String whereClause = "id = ?";
-        String[] whereArgs = {id+""};
+        String whereClause = "title = ?";
+        String[] whereArgs = {title};
         db.delete(TABLE_NAME, whereClause, whereArgs);
         db.close();
     }
 
     public Cursor ifexit(String title){
         SQLiteDatabase db = getWritableDatabase();
-        String query = "select * from Todolist2 where title = \"" +title+"\"";
+        String query = "select * from Todolist where title = \"" +title+"\"";
         Log.e("debug",query);
         return db.rawQuery(query,null);
     }
 
     public Cursor selectall( ){
         SQLiteDatabase db = getWritableDatabase();
-        String query = "select * from Todolist2 ";
-        return db.rawQuery(query,null);
-    }
-
-    public Cursor selectbyid(int id ){
-        SQLiteDatabase db = getWritableDatabase();
-        String query = "select * from Todolist2 where id = " +id+"" ;
+        String query = "select * from Todolist ";
         return db.rawQuery(query,null);
     }
 

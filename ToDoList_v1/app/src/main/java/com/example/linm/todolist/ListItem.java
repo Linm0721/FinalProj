@@ -6,15 +6,13 @@ package com.example.linm.todolist;
 
 public class ListItem {
 
-    private int id;
     private int type;
     private String title;
     private String content;
     private String ddl;
     private String setuptime;
 
-    public ListItem(int id,int type, String title, String content, String ddl,String setuptime){
-        this.id = id;
+    public ListItem(int type, String title, String content, String ddl,String setuptime){
         this.type = type;
         this.title = title;
         this.content = content;
@@ -22,12 +20,6 @@ public class ListItem {
         this.setuptime = setuptime;
     }
 
-    public int getId(){
-        return id;
-    }
-    public void setId(int id){
-        this.id = id;
-    }
     public int getType(){
         return type;
     }
