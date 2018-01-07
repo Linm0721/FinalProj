@@ -32,7 +32,7 @@ public class MyDB extends SQLiteOpenHelper {
                 +"title TEXT,"
                 + "type integer,"
                 + "content TEXT,"
-                + "ddl TEXT,"
+                + "ddl integer,"
                 + "setuptime TEXT)";
         Log.e("debug","创建数据库成功");
         db.execSQL(CREATE_TABLE);
@@ -43,7 +43,7 @@ public class MyDB extends SQLiteOpenHelper {
 
     }
 
-    public void insert(String title, int type,String content, String ddl,String setuptime){
+    public void insert(String title, int type,String content, long ddl,String setuptime){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("title",title);
@@ -56,7 +56,7 @@ public class MyDB extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void update(int id, String title, int type,String content, String ddl,String setuptime){
+    public void update(int id, String title, int type,String content, long ddl,String setuptime){
         SQLiteDatabase db = getWritableDatabase();
         String whereClause = "id = ?" ;
         String[] whereArgs = {id+""};
@@ -80,20 +80,20 @@ public class MyDB extends SQLiteOpenHelper {
 
     public Cursor ifexit(String title){
         SQLiteDatabase db = getWritableDatabase();
-        String query = "select * from Todolist2 where title = \"" +title+"\"";
+        String query = "select * from "+TABLE_NAME+" where title = \"" +title+"\"";
         Log.e("debug",query);
         return db.rawQuery(query,null);
     }
 
     public Cursor selectall( ){
         SQLiteDatabase db = getWritableDatabase();
-        String query = "select * from Todolist2 ";
+        String query = "select * from "+TABLE_NAME;
         return db.rawQuery(query,null);
     }
 
     public Cursor selectbyid(int id ){
         SQLiteDatabase db = getWritableDatabase();
-        String query = "select * from Todolist2 where id = " +id+"" ;
+        String query = "select * from "+TABLE_NAME+" where id = " +id+"" ;
         return db.rawQuery(query,null);
     }
 

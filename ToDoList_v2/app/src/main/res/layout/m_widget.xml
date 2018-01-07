@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#09C"
+    android:padding="@dimen/widget_margin"
+    android:id="@+id/widget">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:src="@mipmap/ddl"
+        android:id="@+id/type"
+        android:layout_gravity = "center_vertical"
+        />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/type"
+        android:text="安卓大作业"
+        android:layout_toRightOf="@+id/type"
+
+        />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/type"
+        android:text="2018-1-20"
+        android:layout_toRightOf="@+id/type"
+
+        />
+
+</RelativeLayout>

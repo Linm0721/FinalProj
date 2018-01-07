@@ -271,7 +271,7 @@ public class Todolist extends AppCompatActivity {
                     String title = cursor.getString(1);
                     int type = cursor.getInt(2);
                     String content = cursor.getString(3);
-                    String ddl = cursor.getString(4);
+                    long ddl = cursor.getLong(4);
                     String stime = cursor.getString(5);
                     ListItem newitem = new ListItem(id,type,title,content,ddl,stime);
                     mAdapter.addItem(newitem);
@@ -289,7 +289,7 @@ public class Todolist extends AppCompatActivity {
                     String title = cursor.getString(1);
                     int type = cursor.getInt(2);
                     String content = cursor.getString(3);
-                    String ddl = cursor.getString(4);
+                    long ddl = cursor.getLong(4);
                     String stime = cursor.getString(5);
                     ListItem newitem = new ListItem(id,type,title,content,ddl,stime);
                     mAdapter.addItem(newitem);

@@ -10,10 +10,10 @@ public class ListItem {
     private int type;
     private String title;
     private String content;
-    private String ddl;
+    private long ddl;
     private String setuptime;
 
-    public ListItem(int id,int type, String title, String content, String ddl,String setuptime){
+    public ListItem(int id,int type, String title, String content, long ddl,String setuptime){
         this.id = id;
         this.type = type;
         this.title = title;
@@ -37,7 +37,7 @@ public class ListItem {
     public String getContent(){
         return content;
     }
-    public String getDdl(){
+    public long getDdl(){
         return ddl;
     }
     public String getSetuptime(){

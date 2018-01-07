@@ -16,20 +16,22 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/type"
-        android:text="安卓大作业"
-        android:layout_toRightOf="@+id/type"
 
+        android:text="安卓大作业"
+
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/type"
         />
 
     <TextView
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/type"
-        android:text="2018-1-20"
+        android:layout_marginTop="50dp"
+        android:text="还有XX天XX小时XX分"
         android:layout_toRightOf="@+id/type"
-
+        android:textSize="10sp"
         />
 
 </RelativeLayout>

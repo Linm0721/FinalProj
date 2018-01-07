@@ -23,20 +23,40 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="XXX生日"
+            android:text="记得要写安卓大作业啊哈哈哈哈哈哈"
             android:layout_gravity="center"
             android:textSize="20sp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
 
-        <TextView
-            android:id="@+id/ddl"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1月12日"
             android:layout_gravity="center"
-            android:layout_margin="10dp"/>
+            android:layout_margin="6dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/ddl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018-01-11 15:00"
+                android:layout_gravity="center"
+
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/till"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="还有XX天XX小时XX分"
+                android:layout_gravity="center"
+                android:textSize="8sp"
+                />
+        </LinearLayout>
+
     </LinearLayout>
 
 

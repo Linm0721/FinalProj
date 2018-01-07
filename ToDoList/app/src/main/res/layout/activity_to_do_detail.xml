@@ -6,73 +6,39 @@
     android:layout_height="match_parent"
     tools:context="com.example.linm.todolist.ToDoDetail">
 
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="0dp"
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="368dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal">
+        android:layout_margin="10dp">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@mipmap/type1"/>
+        <Button
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/back"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5px"/>
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/delete"
+            android:layout_alignLeft="@+id/edit"
+            android:layout_marginLeft="-100px"/>
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/edit"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20px"
+            />
 
-        <TextView
-            android:id="@+id/type_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:text="购物"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <RadioGroup
-            android:id="@+id/radiogroup"
-            android:layout_width="368dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            >
-
-            <RadioButton
-                android:id="@+id/ddl_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ddl"
-                />
-
-            <RadioButton
-                android:id="@+id/birthday_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="生日"/>
-
-            <RadioButton
-                android:id="@+id/buy_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="购物"/>
-
-            <RadioButton
-                android:id="@+id/travel_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="出行"/>
-
-        </RadioGroup>
-
-    </LinearLayout>
-
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/linear1"
@@ -80,26 +46,82 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear"
+        app:layout_constraintTop_toBottomOf="@+id/relative"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@mipmap/title"
-            />
-        <EditText
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="输入备忘"
-            android:visibility="gone"/>
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
 
         <TextView
             android:id="@+id/title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:layout_gravity="center"
+            android:text="安卓project"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear1"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="创建于"
+            android:textSize="8sp"/>
+
+        <TextView
+            android:id="@+id/setuptime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2018-01-07 23:00:00"
+            android:textSize="8sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  |  类型： "
+            android:textSize="8sp"/>
+        <TextView
+            android:id="@+id/type_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="购物"
+            android:textSize="8sp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear4"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@mipmap/alarm"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2018-01-09 12:00:00"
+            android:textSize="15sp"
             android:layout_gravity="center"
             />
     </LinearLayout>
@@ -110,91 +132,26 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear1"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@mipmap/content"
-            />
-        <EditText
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="备注"
-            android:visibility="gone"/>
-        <TextView
-            android:id="@+id/content_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear2"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@mipmap/alarm"
-            />
-        <EditText
-            android:id="@+id/time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="时间"
-            android:visibility="gone"/>
-        <TextView
-            android:id="@+id/time_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear3"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@mipmap/date"
-            />
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
-        <TextView
-            android:id="@+id/setuptime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            />
+            <TextView
+                android:id="@+id/content_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="hhhhh"
+                />
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/edit"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear4"
-        android:layout_marginTop="20dp"/>
+
+
+
+
+
 
 
 </android.support.constraint.ConstraintLayout>
