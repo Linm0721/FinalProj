@@ -33,9 +33,7 @@ public class MyDB extends SQLiteOpenHelper {
                 + "type integer,"
                 + "content TEXT,"
                 + "ddl integer,"
-                + "setuptime TEXT,"
-                +"remindprev integer default 0,"
-                + "remind integer default 0)";
+                + "setuptime TEXT)";
         Log.e("debug","创建数据库成功");
         db.execSQL(CREATE_TABLE);
 
@@ -68,8 +66,6 @@ public class MyDB extends SQLiteOpenHelper {
         values.put("content",content);
         values.put("ddl",ddl);
         values.put("setuptime",setuptime);
-        values.put("remindprev",0);
-        values.put("remind",0);
         db.update(TABLE_NAME, values, whereClause, whereArgs);
         db.close();
     }
@@ -105,26 +101,6 @@ public class MyDB extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String query = "select * from "+TABLE_NAME + " order by ddl";
         return db.rawQuery(query,null);
-    }
-
-    public void updateremindprev(int id){
-        SQLiteDatabase db = getWritableDatabase();
-        String whereClause = "id = ?" ;
-        String[] whereArgs = {id+""};
-        ContentValues values = new ContentValues();
-        values.put("remindprev",1);
-        db.update(TABLE_NAME, values, whereClause, whereArgs);
-        db.close();
-    }
-
-    public void updateremind(int id){
-        SQLiteDatabase db = getWritableDatabase();
-        String whereClause = "id = ?" ;
-        String[] whereArgs = {id+""};
-        ContentValues values = new ContentValues();
-        values.put("remind",1);
-        db.update(TABLE_NAME, values, whereClause, whereArgs);
-        db.close();
     }
 
 }

@@ -167,10 +167,59 @@ public class ToDoDetail extends AppCompatActivity {
         Deletbutton = (Button)findViewById(R.id.delete);
 
         id = getIntent().getIntExtra("id",0);
-        Log.e("debug","收到id"+id+"");
         acceptvalue();
+  /*      MyDB db = new MyDB(getBaseContext());
+        Cursor cursor = db.selectbyid(id);
 
+        long time = 0;
+        String stime="";
+
+        if(cursor.moveToFirst()){
+            typeE = cursor.getInt(2);
+
+            time = cursor.getLong(4);
+            try{
+                stime = longToString(time,"yyyy-MM-dd HH:mm");
+            }catch (ParseException p){
+
+            }
+
+            titleTV.setText(cursor.getString(1));
+            contentTV.setText(cursor.getString(3));
+            timeTV.setText(stime);
+            setuptimeTV.setText(cursor.getString(5));
+        }
+*/
         final int updateid = id;
+
+
+    /*    switch (typeE){
+            case R.mipmap.ddlfortype:{
+                typeTV.setText("ddl");
+                RB1.setChecked(true);
+                Log.e("debug","原先是ddl");
+                break;
+            }
+            case R.mipmap.birthday:{
+                typeTV.setText("生日");
+                RB2.setChecked(true);
+                Log.e("debug","原先是生日");
+                break;
+            }
+            case R.mipmap.buy:{
+                typeTV.setText("购物");
+                RB3.setChecked(true);
+                Log.e("debug","原先是购物");
+                break;
+            }
+            case R.mipmap.travel:{
+                typeTV.setText("出行");
+                RB4.setChecked(true);
+                Log.e("debug","原先是出行");
+                break;
+            }
+        }
+*/
 
 
         Backbutton.setOnClickListener(new View.OnClickListener() {
@@ -213,6 +262,74 @@ public class ToDoDetail extends AppCompatActivity {
                 intent.putExtra("id",updateid);
                 startActivityForResult(intent, 9);
 
+
+
+
+          /*      //编辑模式
+                if (!tag1) {
+                    button.setBackgroundResource(R.mipmap.correct);
+                    tag1 = true;
+                    RG.setVisibility(View.VISIBLE);
+                    titleET.setVisibility(View.VISIBLE);
+                    contentET.setVisibility(View.VISIBLE);
+                    timeET.setVisibility(View.VISIBLE);
+                    typeTV.setVisibility(View.GONE);
+                    titleTV.setVisibility(View.GONE);
+                    contentTV.setVisibility(View.GONE);
+                    timeTV.setVisibility(View.GONE);
+
+                }
+                //显示
+                else {
+                    button.setBackgroundResource(R.mipmap.edit);
+                    tag1 = false;
+                    RG.setVisibility(View.GONE);
+                    titleET.setVisibility(View.GONE);
+                    contentET.setVisibility(View.GONE);
+                    timeET.setVisibility(View.GONE);
+                    switch (typeE){
+                        case R.mipmap.ddlfortype:{
+                            typeTV.setText("ddl");
+                            break;
+                        }
+                        case R.mipmap.birthday:{
+                            typeTV.setText("生日");
+                            break;
+                        }
+                        case R.mipmap.buy:{
+                            typeTV.setText("购物");
+                            break;
+                        }
+                        case R.mipmap.travel:{
+                            typeTV.setText("出行");
+                            break;
+                        }
+                    }
+
+                    typeTV.setVisibility(View.VISIBLE);
+                    titleTV.setText(titleET.getText());
+                    titleTV.setVisibility(View.VISIBLE);
+                    contentTV.setText(contentET.getText());
+                    contentTV.setVisibility(View.VISIBLE);
+                    timeTV.setText(timeET.getText());
+                    timeTV.setVisibility(View.VISIBLE);
+
+                    MyDB db = new MyDB(getBaseContext());
+                    Log.e("debug","保存修改");
+                    SimpleDateFormat formatter  =  new  SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+                    Date curDate =  new Date(System.currentTimeMillis());
+                    String  str = formatter.format(curDate);
+
+                    long time = 0;
+                    try{
+                        time = stringToLong(timeET.getText().toString(),"yyyy-MM-dd HH:mm");
+                    }catch (ParseException p){
+
+                    }
+                    db.update(updateid,titleET.getText().toString(),typeE,contentET.getText().toString(),time,str);
+                    setResult(98, new Intent());
+
+                }*/
 
             }
 

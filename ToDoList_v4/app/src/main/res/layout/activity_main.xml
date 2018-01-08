@@ -7,16 +7,6 @@
     tools:context="com.example.linm.todolist.MainActivity">
 
 
-
-        <!--play按钮-->
-        <Button
-            android:id="@+id/play_pause"
-            android:text="PLAY"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            />
-
     <Button
         android:id="@+id/todolist"
         android:layout_width="wrap_content"
@@ -26,6 +16,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 
 </android.support.constraint.ConstraintLayout>
