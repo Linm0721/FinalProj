@@ -35,9 +35,6 @@ public class Todolist extends AppCompatActivity {
     private FloatingActionButton FloatingButton;
     private int typeE;
     private boolean tag1 = false;
-    private Button Backbutton;
-    private TextView SortByddl;
-    private TextView SortBySetup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +42,12 @@ public class Todolist extends AppCompatActivity {
         setContentView(R.layout.activity_todolist);
         Log.e("debug","comingTodoList.java");
 
-        Backbutton = (Button)findViewById(R.id.back);
-        SortBySetup = (TextView)findViewById(R.id.forsetup) ;
-        SortByddl = (TextView)findViewById(R.id.forddl);
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new CardAdapter() ;
         mRecyclerView.setAdapter(mAdapter);
         FloatingButton = (FloatingActionButton) findViewById(R.id.add);
-
         dataUpdate();
-        SortBySetup.setTextColor(0xffd81e06);
-
 
         FloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,31 +55,6 @@ public class Todolist extends AppCompatActivity {
                 Intent intent = new Intent(Todolist.this, AddTodolist.class);
                 startActivityForResult(intent, 9);
 
-            }
-        });
-
-        Backbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               finish();
-            }
-        });
-
-        SortByddl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SortByddl.setTextColor(0xffd81e06);
-                SortBySetup.setTextColor(0xff515151);
-                dataUpdateByddl();
-            }
-        });
-
-        SortBySetup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SortByddl.setTextColor(0xff515151);
-                SortBySetup.setTextColor(0xffd81e06);
-                dataUpdate();
             }
         });
 
@@ -294,54 +260,6 @@ public class Todolist extends AppCompatActivity {
             //select *
             MyDB db = new MyDB(getBaseContext());
             Cursor cursor = db.selectall();
-            mAdapter.removeAllItem();
-            if (cursor == null) {
-
-            }
-            else {
-                //发送广播
-                if(cursor.moveToFirst()){
-                    int id = cursor.getInt(0);
-                    String title = cursor.getString(1);
-                    int type = cursor.getInt(2);
-                    String content = cursor.getString(3);
-                    long ddl = cursor.getLong(4);
-                    String stime = cursor.getString(5);
-                    ListItem newitem = new ListItem(id,type,title,content,ddl,stime);
-                    mAdapter.addItem(newitem);
-                    Intent wi = new Intent();
-                    wi.setAction("widgetStaticBroadcast");
-                    wi.putExtra("id",id);
-                    wi.putExtra("title",title);
-                    wi.putExtra("type",type);
-                    wi.putExtra("ddl",ddl);
-                    sendBroadcast(wi);
-                }
-
-                while (cursor.moveToNext()) {
-                    int id = cursor.getInt(0);
-                    String title = cursor.getString(1);
-                    int type = cursor.getInt(2);
-                    String content = cursor.getString(3);
-                    long ddl = cursor.getLong(4);
-                    String stime = cursor.getString(5);
-                    ListItem newitem = new ListItem(id,type,title,content,ddl,stime);
-                    mAdapter.addItem(newitem);
-                }
-
-
-            }
-        } catch (SQLException e) {
-
-        }
-    }
-
-
-    public void dataUpdateByddl() {
-        try {
-            //select *
-            MyDB db = new MyDB(getBaseContext());
-            Cursor cursor = db.selectallbyddl();
             mAdapter.removeAllItem();
             if (cursor == null) {
 

@@ -97,10 +97,4 @@ public class MyDB extends SQLiteOpenHelper {
         return db.rawQuery(query,null);
     }
 
-    public Cursor selectallbyddl( ){
-        SQLiteDatabase db = getWritableDatabase();
-        String query = "select * from "+TABLE_NAME + " order by ddl";
-        return db.rawQuery(query,null);
-    }
-
 }
